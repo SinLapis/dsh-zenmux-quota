@@ -1,0 +1,9 @@
+# Registers the ZenMux quota indicator bundle. The plugin adds no provider, no
+# model and no default model. Override its options from your own profile patch:
+#   - id: zenmux-quota
+#     config:
+#       providers: [zenmux-anthropic, zenmux-openai]
+#       display: binding
+- insert:
+    - id: zenmux-quota
+      name: dsh-zenmux-quota

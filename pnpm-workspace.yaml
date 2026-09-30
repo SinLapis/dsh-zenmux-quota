@@ -1,0 +1,5 @@
+# Development-only: esbuild's install script fetches the platform-native binary.
+# This file is not published and the DSH profile that installs the plugin never
+# reads it.
+allowBuilds:
+  esbuild: true

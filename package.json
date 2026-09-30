@@ -1,0 +1,122 @@
+{
+  "name": "dsh-zenmux-quota",
+  "displayName": "DSH ZenMux Quota",
+  "description": "Show the remaining ZenMux subscription quota (5-hour and 7-day rolling windows) beside the DSH composer model selector. The Management API key stays on the host.",
+  "version": "0.1.0",
+  "author": "SinLapis",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SinLapis/dsh-zenmux-quota.git"
+  },
+  "homepage": "https://github.com/SinLapis/dsh-zenmux-quota#readme",
+  "bugs": {
+    "url": "https://github.com/SinLapis/dsh-zenmux-quota/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "zenmux",
+    "quota"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.client.json",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "prepack": "npm run build"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-model-selection",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-client-locale": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-client-store": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-client-ui-conversation": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-client-ui-model-selection": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-client-ui-renderer": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-client-ui-slots": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-host-webserver": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/dsh-session": "^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/schemastery": "^3.18.2",
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-client-locale": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-store": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-conversation": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-model-selection": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-renderer": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-slots": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-session": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-client-locale": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-client-store": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-client-ui-model-selection": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-client-ui-slots": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-host-webserver": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
+    "@deepseek-ai/schemastery": "^3.18.2",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.20.0",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.0",
+    "esbuild": "^0.25.0",
+    "jsdom": "^25.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.4"
+  }
+}

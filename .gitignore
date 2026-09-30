@@ -1,0 +1,9 @@
+node_modules/
+# Built artifacts are committed on purpose so `dsh plugin add github:...` works
+# (the DSH client module system needs lib/client.js at install time).
+lib/client.js.tmp
+*.tsbuildinfo
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

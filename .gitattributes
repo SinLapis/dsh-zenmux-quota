@@ -1,0 +1,16 @@
+# Normalize line endings on commit. The committed lib/client.js is a shipped
+# artifact that the DSH client module system serves byte-for-byte, and the source
+# files carry Chinese locale strings, so a CRLF rewrite on a Windows checkout
+# would show up as a spurious whole-file diff and risk mojibake.
+* text=auto eol=lf
+
+# The shipped bundle must stay LF regardless of the local autocrlf setting.
+lib/*.js text eol=lf
+lib/**/*.d.ts text eol=lf
+
+# Binary artifacts, never converted.
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
